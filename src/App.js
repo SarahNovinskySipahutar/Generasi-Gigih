@@ -7,7 +7,10 @@ function App() {
     const [token, setToken] = useState("");
     const [searchSong, setSearchSong] = useState("");
     const [songData, setSongData] = useState([]);
+    const [selectedSongs, setSelectedSongs] = useState([]);
+    const [combineSongs, setCombineSongs] = useState([]);
 
+    // get the token from thr url
     useEffect(() => {
         const queryString = new URL(window.location.href.replace("#", "?"))
         .searchParams;
@@ -15,6 +18,16 @@ function App() {
         setToken(accessToken);
     }, []);
 
+    // basically pass songData to combineSongs and add isSelected to combineSongs
+  useEffect(() => {
+    const handleCombineTracks = songData.map((song) => ({
+      ...song,
+      isSelected: selectedSongs.find((data) => data === song.uri),
+    }));
+    setCombineSongs(handleCombineTracks);
+  }, [songData, selectedSongs]);
+
+  // a function to get song data from spotify
     const getSong = async () => {
         await axios
         .get(
@@ -71,9 +84,13 @@ function App() {
                 return (
                     <div key={id}>
                         <Song
+                        key={uri}
+                        uri={uri}
                         image={album.images[0]?.url}
                         title={name}
                         album={artists[0]?.name}
+                        selectState={handleSelect}
+              isSelected={isSelected}
                         />
                         <button className="inline-block px-6 py-2.5 mr-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg" onClick={() => handleSelectBtn(song.id)}>
                             {isSelected ? "Deselect" : "Select"}

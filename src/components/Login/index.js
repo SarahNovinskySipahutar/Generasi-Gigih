@@ -1,7 +1,7 @@
 import './index.css';
 import { useEffect } from "react";
 
-const CLIENT_ID = process.env.REACT_APP_SPOTIFY_KEY;
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const SPOTIFY_AUTHORIZE_URL = 'https://accounts.spotify.com/authorize';
 const REDIRECT_URL = "http://localhost:3000/";
 const SCOPES = 'playlist-modify-private';
