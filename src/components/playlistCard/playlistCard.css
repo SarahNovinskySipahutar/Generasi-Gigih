@@ -1,0 +1,50 @@
+.Card {
+    margin: 20px;
+    text-align: center;
+    flex-direction: row;
+    width: 350px;
+    height: 500px;
+    background-color: rgba(113, 113, 113, 0.2);
+    border-radius: 10px;
+}
+
+.Card:hover {
+    background-color: rgba(113, 113, 113, 0.35);
+}
+
+.Card img {
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+}
+
+.text-component {
+    margin-top: 4px;
+}
+
+.text-component p {
+    color: white;
+}
+
+.album {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.buttonSelect {
+    border-radius: 10px;
+    padding: 15px 32px;
+    background-color: #4CAF50;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.buttonSelect:hover {
+    box-shadow: 0 6px 16px 0 rgba(37, 37, 37, 0.19), 0 17px 20px 0 rgba(37, 37, 37, 0.19);
+    background-color: #6dc870;
+}
