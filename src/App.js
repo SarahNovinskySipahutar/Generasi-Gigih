@@ -2,6 +2,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import url from "./components/helper/spotify";
 import Song from "./components/Song";
+import { useSelector } from "react-redux";
+import {
+    BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from "react-router-dom";
+import CreatePlaylist from "./pages/CreatePlaylist";
+import Login from "./pages/Login";
 
 function App() {
     const [token, setToken] = useState("");
@@ -97,6 +106,20 @@ function App() {
                         </button>
                     </div>
                 );
+                {/* if token is empty, redirect to login*/}
+      <Router>
+      <Switch>
+        <Route exact path="/">
+          {!token ? <Login /> : <Redirect to="/create-playlist" />}
+        </Route>
+        <Route path="/create-playlist">
+          <CreatePlaylist />
+        </Route>
+        <Route path="*">
+          <h3>404</h3>
+        </Route>
+      </Switch>
+    </Router>
                 })}
             </div>
         </div>
