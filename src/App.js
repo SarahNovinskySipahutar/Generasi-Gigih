@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import url from "./components/helper/spotify";
 import Song from "./components/Song";
-import { useSelector } from "react-redux";
 import {
     BrowserRouter as Router,
   Route,
@@ -50,13 +49,12 @@ function App() {
         });
     };
 
-    const [selectedSong, setSelectedSong] = useState([]);
     const handleSelectBtn = (id) => {
-        const indexSelectedSong = selectedSong.indexOf(id);
-        const newSelectedSong = [...selectedSong];
-        (indexSelectedSong < 0) ? newSelectedSong.push(id) : newSelectedSong.splice(indexSelectedSong, 1);
-        setSelectedSong(newSelectedSong);
-    };
+      const indexSelectedSong = selectedSongs.indexOf(id);
+      const newSelectedSong = [...selectedSongs];
+      (indexSelectedSong < 0) ? newSelectedSong.push(id) : newSelectedSong.splice(indexSelectedSong, 1);
+      setSelectedSongs(newSelectedSong);
+  };
 
     return (
         <div className="p-5 bg-gray-900 h-screen space-y-5 overflow-auto">
@@ -88,8 +86,8 @@ function App() {
             </div>  
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {songData.map((song) => {
-                const { id, name, artists, album } = song;
-                const isSelected = selectedSong.includes(id);
+                const { id, name, artists, album, uri} = song;
+                const isSelected = selectedSongs.includes(id);
                 return (
                     <div key={id}>
                         <Song
@@ -98,7 +96,7 @@ function App() {
                         image={album.images[0]?.url}
                         title={name}
                         album={artists[0]?.name}
-                        selectState={handleSelect}
+                        selectState={handleSelectBtn}
               isSelected={isSelected}
                         />
                         <button className="inline-block px-6 py-2.5 mr-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg" onClick={() => handleSelectBtn(song.id)}>

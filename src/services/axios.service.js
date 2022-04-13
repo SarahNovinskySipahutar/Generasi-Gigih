@@ -41,5 +41,4 @@ const pushSongs = ({ playlistId, songUris }) => {
   });
 };
 
-export { getToken, retrieveSongs, retrieveUserId, createPlaylist, pushSongs };
 export { retrieveSongs, retrieveUserId, createPlaylist, pushSongs };

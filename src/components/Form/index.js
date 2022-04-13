@@ -8,11 +8,8 @@ const Form = ({ token, userId, songUris }) => {
     description: "",
   });
   // run addSong function when playlistId is set
-  useEffect(() => {
-    if (playlistId) {
-      addSongs();
-    }
-  }, [playlistId]);
+useEffect(() => {
+}, [playlistId]);
   // get the form data
   const handleForm = (e) => {
     const { name, value } = e.target;
@@ -88,6 +85,6 @@ const Form = ({ token, userId, songUris }) => {
       </div>
     </form>
   );
-};
+  };
 
 export default Form;
