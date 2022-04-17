@@ -2,8 +2,8 @@ import "../spotify/Spotify.css";
 import CardSong from "../../Song/CardSong.js";
 import useSearch from "../../hooks/useSearch";
 import { useState } from "react";
-import SearchForm from "../../component/searchForm/SearchForm";
-import PlaylistForm from "../../component/playlistForm/playlistForm";
+import SearchForm from "../../component/SearchForm";
+import PlaylistForm from "../../component/playlistForm";
 import axios from "axios";
 import PlaylistCard from "../../component/playlistCard/playlistCard";
 

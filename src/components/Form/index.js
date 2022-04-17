@@ -11,10 +11,10 @@ const Form = ({ token, userId, songUris }) => {
 useEffect(() => {
 }, [playlistId]);
   // get the form data
-  const handleForm = (e) => {
+  function handleForm(e) {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
-  };
+  }
   // handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();

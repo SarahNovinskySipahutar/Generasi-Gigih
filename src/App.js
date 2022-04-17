@@ -8,15 +8,13 @@ import {
   Redirect,
   Switch,
 } from "react-router-dom";
-import CreatePlaylist from "./pages/CreatePlaylist";
-import Login from "./pages/Login";
 
 function App() {
     const [token, setToken] = useState("");
     const [searchSong, setSearchSong] = useState("");
     const [songData, setSongData] = useState([]);
     const [selectedSongs, setSelectedSongs] = useState([]);
-    const [combineSongs, setCombineSongs] = useState([]);
+    const [, setCombineSongs] = useState([]);
 
     // get the token from thr url
     useEffect(() => {
@@ -104,20 +102,7 @@ function App() {
                         </button>
                     </div>
                 );
-                {/* if token is empty, redirect to login*/}
-      <Router>
-      <Switch>
-        <Route exact path="/">
-          {!token ? <Login /> : <Redirect to="/create-playlist" />}
-        </Route>
-        <Route path="/create-playlist">
-          <CreatePlaylist />
-        </Route>
-        <Route path="*">
-          <h3>404</h3>
-        </Route>
-      </Switch>
-    </Router>
+
                 })}
             </div>
         </div>
